@@ -6,11 +6,11 @@ Just add the bookmarklet below to your bookmarks bar.
 
 Just drag the following link to your bookmark bar!
 
-[GeniusScheduler](javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://github.com/aricallen/genius-scheduler/script.js';})();)
+href(javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://github.com/aricallen/genius-scheduler/script.js';})();)
 
 Alternatively, create a new bookmark and add the following code as the source.
 
-```
+```javascript
 javascript:(function(){document.body.appendChild(document.createElement('script')).src='http://www.curiousrhythms.com/genius-scheduler/script.js';})();
 ```
 
@@ -21,7 +21,7 @@ An .ics file will be created with your shifts for the week that you can add to y
 
 ##Example
 
-![Example MyPage](https://github.com/aricallen/genius-scheduler/example-mypage.png)
+img(https://github.com/aricallen/genius-scheduler/blob/master/example-mypage.png)
 
 ##Background
 
