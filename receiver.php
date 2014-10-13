@@ -46,7 +46,6 @@ DTSTART:19701101T020000
 RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
 END:STANDARD
 END:VTIMEZONE
-
 BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
@@ -108,7 +107,6 @@ CALSCALE:GREGORIAN
 		$cal .= $br;
 
 ?>
-
 BEGIN:VEVENT
 UID:<?php echo $uid . $eol; ?>
 DTSTART;TZID=America/New_York:<?php echo $cal_start_time . $eol; ?>
@@ -117,11 +115,9 @@ DTSTAMP:<?php echo $stamp . $eol; ?>
 DESCRIPTION:<?php echo $description . $eol; ?>
 SUMMARY:<?php echo $description . $eol; ?>
 END:VEVENT
-
 <?php
 	} // end foreach VEVENT loop
 ?>
-
 END:VCALENDAR
 
 	<?php 
