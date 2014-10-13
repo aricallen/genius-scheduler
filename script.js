@@ -94,6 +94,7 @@
 	}
 
 	function getDays() {
+		var dayNames = getDayNames();
 		var days = [];
 		$('.day').each(function() {
 			var $this = $(this);
@@ -101,14 +102,17 @@
 			if ($text === '') {
 				$text = 'splitShift';
 			}
-			if ($text === 'RTO') {
-				$text = '';
-			}
 			days.push($text.replace(/\W/g, ''));
 		});
-		days = cleanArray(days);
+		for (var i = 0; i < days.length; i++) {
+			if(dayNames.indexOf(days[i]) < 0) {
+				// other text that is not a day i.e. RTO
+				days[i] = '';
+			}
+		}
+		days = cleanArray(days); // removes empty strings
 		days = handleSplitShift(days);
-
+		pp(days, "days");
 		return days;
 	}
 
@@ -152,12 +156,16 @@
 		return better;
 	}
 
+	function getDayNames() {
+		return ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+	}
+
 	/*
 	shifts = [ { day:..., startTime: ..., endTime:... } ];
 	 */
 
 	function formatScheduleData(shifts, beginningDate) {
-		var dayNames = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+		var dayNames = getDayNames();
 		var scheduleDataArray = []; // array of schedule data objects
 		for(i=0; i < shifts.length; i++) {
 			var incrDate = dayNames.indexOf(shifts[i].day);
@@ -182,9 +190,11 @@
 		document.location = pathToICSCreater + "?schedule_data_json=" + schedule_data_json;
 	}
 
-	function pp(data) {
-		console.log(data);
+	function pp(data, text) {
+		console.log(data, text);
 	}
+
+
 
 })(); // main{} siaf
 
