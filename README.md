@@ -2,22 +2,18 @@
 
 A bookmarklet that grabs your weekly shift from mypage and creates an .ics file for your calendar
 
-Just add the bookmarklet below to your bookmarks bar.
+##How To
 
-Just drag the following link to your bookmark bar!
-
-<a href="javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://github.com/aricallen/genius-scheduler/script.js';})();">A Link</a>
-
-Alternatively, create a new bookmark and add the following code as the source.
+- Create a blank or dummy bookmark
+- Copy the code below and paste it into the URL portion of the bookmark
 
 ```javascript
 javascript:(function(){document.body.appendChild(document.createElement('script')).src='http://www.curiousrhythms.com/genius-scheduler/script.js';})();
 ```
 
-Then...
-Navigate to where you can see your schedule for the week on mypage and click the bookmarklet.
+- Navigate to where you can see your schedule for the week on mypage and click the bookmarklet.
 
-An .ics file will be created with your shifts for the week that you can add to your calendar of choice (just double click it in downloads).
+- An .ics file will be created with your shifts for the week that you can add to your calendar of choice (just double click it in downloads).
 
 ##Example
 
