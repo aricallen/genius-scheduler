@@ -25,10 +25,14 @@ Inspired by previous similar projects [Kronical](http://byronthegreat.com/kronic
 
 Hopefully you will find this an easy and useful tool that will save everyone time and energy :)
 
-##Works In
+##Tested In
 
+10.9
 - Safari
 - Chrome (you may have to "allow unsafe script" for it to work... click the shield in the address bar)
+
+10.10
+- Safari
 
 ##To Do
 
