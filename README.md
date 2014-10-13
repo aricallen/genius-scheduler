@@ -27,11 +27,12 @@ Hopefully you will find this an easy and useful tool that will save everyone tim
 
 ##Works In
 
-- Chrome (you may have to "allow unsafe script" for it to work)
+- Safari
+- Chrome (you may have to "allow unsafe script" for it to work... click the shield in the address bar)
 
 ##To Do
 
-- Test other browsers
+- Mobile version?
 
 ##Contributing
 
