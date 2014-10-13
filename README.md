@@ -15,13 +15,13 @@ javascript:(function(){document.body.appendChild(document.createElement('script'
 
 - An .ics file will be created with your shifts for the week that you can add to your calendar of choice (just double click it in downloads).
 
-##Example
+##Used On Page
 
 ![Example MyPage](https://raw.githubusercontent.com/aricallen/genius-scheduler/master/example-mypage.png)
 
 ##Background
 
-Inspired by Kronical and Roster Genius. Two programs that used to provide a solution for this need but were taken down for whatever reason. So I decided to build my own version. We work in a place where we shouldn't have to keep manually put our schedules into our devices!
+Inspired by previous similar projects [Kronical](http://byronthegreat.com/kronical/) and [Roster Genius](https://github.com/joshhunt/rostergenius). These used to provide a solution for this need but were taken down for whatever reason. So I decided to build my own version. We work in a place where we shouldn't have to keep manually put our schedules into our devices!
 
 Hopefully you will find this an easy and useful tool that will save everyone time and energy :)
 
