@@ -5,7 +5,8 @@ A bookmarklet that grabs your weekly shift from mypage and creates an .ics file 
 Just add the bookmarklet below to your bookmarks bar.
 
 Just drag the following link to your bookmark bar!
-[GeniusScheduler](javascript:(function(){document.body.appendChild(document.createElement('script')).src='http://www.curiousrhythms.com/genius-scheduler/script.js';})();)
+
+<a href="javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://github.com/aricallen/genius-scheduler/script.js';})();">GeniusScheduler</a>
 
 Alternatively, create a new bookmark and add the following code as the source.
 
@@ -20,7 +21,7 @@ An .ics file will be created with your shifts for the week that you can add to y
 
 ##Example
 
-![Example Page](https://github.com/aricallen/genius-scheduler/screenshot.jpg)
+<img src="https://github.com/aricallen/genius-scheduler/example-mypage.png" />
 
 ##Background
 
