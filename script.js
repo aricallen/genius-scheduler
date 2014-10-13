@@ -35,14 +35,16 @@
 			mineScheduleData();
 		});
 	}
+
+	var dateTest;
 	
 	function mineScheduleData() {
 		var currentURL = window.location.protocol + "//" + window.location.host + window.location.pathname;
 		// actual page:
 		// https://mypage.apple.com/myPage/myTime.action?method=forwardSchedule&activeMenu=forwardSchedule
 		
-		if (currentURL.indexOf('mypage.apple.com') == -1 && currentURL.indexOf('localhost') < 0 && currentURL.indexOf('curious') < 0) {
-			alert("Use this bookmarklet to grab shifts mypage.apple.com and save them to a .ics file to be used in a 'Calendar' app.");
+		if (currentURL.indexOf('mypage.apple.com') == -1 && currentURL.indexOf('localhost') < 0) {
+			alert("Open the bookmark when viewing schedule on mypage to save the selected calendar week.");
 		} else {
 			/**
 			 * Gather data to send to php
@@ -56,20 +58,24 @@
 				} 
 			}); // >> Schedule begins Sep 20, 2014 
 			var beginningDate = getBeginningDate(scheduleHeader); // >> Sat Sep 26 2014 00:25:51 GMT-0400 (EDT) 
+			// var shifts = getShifts();
+
 			var days = getDays(); 
 			var times = getTimes();
 			var shifts = createShifts(days, times);
+			// pp(shifts);
 			var scheduleData = formatScheduleData(shifts, beginningDate);
 			
 			/**
 			 * sending to php to create ics
 			 */
-			var pathToICSCreater = "https://www.curiousrhythms.com/genius-scheduler/receiver.php";
+			// var pathToICSCreater = "http://www.curiousrhythms.com/genius-scheduler/receiver.php";
+			var pathToICSCreater = "http://localhost/study-js/genius-scheduler/receiver.php";
 			createICS(scheduleData, pathToICSCreater);
 
 		}
 
-	} // mineScheduleData();
+	} // gatherData();
 
 	function getBeginningDate(phraseArray) {
 		var months = new Array();
@@ -90,27 +96,18 @@
 
 	function getDays() {
 		var days = [];
-		var dayNames = getDayNames();
 		$('.day').each(function() {
 			var $this = $(this);
 			var $text = $this.text();
-			$text = $text.replace(/\W/g, '');
 			if ($text === '') {
 				$text = 'splitShift';
 			}
-			if (dayNames.indexOf($text) == -1) {
-				$text = '';
-			}
-			days.push($text);
+			days.push($text.replace(/\W/g, ''));
 		});
 		days = cleanArray(days);
 		days = handleSplitShift(days);
 		
 		return days;
-	}
-
-	function getDayNames() {
-		return ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 	}
 
 	function handleSplitShift(days) {
@@ -154,11 +151,11 @@
 	}
 
 	/*
-		shifts = [ { day:..., startTime: ..., endTime:... } ];
+	shifts = [ { day:..., startTime: ..., endTime:... } ];
 	 */
 
 	function formatScheduleData(shifts, beginningDate) {
-		var dayNames = getDayNames();
+		var dayNames = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 		var scheduleDataArray = []; // array of schedule data objects
 		for( i=0, j=0; i < shifts.length; i++, j+=2 ) {
 			var incrDate = dayNames.indexOf(shifts[i].day);
@@ -183,4 +180,23 @@
 		document.location = pathToICSCreater + "?schedule_data_json=" + schedule_data_json;
 	}
 
+	function pp($data) {
+		console.log($data);
+	}
+
 })(); // main{} siaf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
