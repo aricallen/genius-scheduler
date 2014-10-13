@@ -1,6 +1,6 @@
 #GeniusScheduler
 
-A bookmarklet that grabs your weekly shift from mypage and creates a .ics file for your calendar
+A bookmarklet that grabs your weekly shift from mypage and creates an .ics file for your calendar
 
 Just add the bookmarklet below to your bookmarks bar.
 
