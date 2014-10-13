@@ -27,12 +27,20 @@ Hopefully you will find this an easy and useful tool that will save everyone tim
 
 ##Tested In
 
-10.9
-- Safari
-- Chrome (you may have to "allow unsafe script" for it to work... click the shield in the address bar)
+
+OS X:
 
 10.10
 - Safari
+
+10.9:
+- Safari
+- Chrome (you may have to "allow unsafe script" for it to work... click the shield in the address bar)
+
+iOS:
+
+8.0.2
+- Mobile Safari
 
 ##To Do
 
