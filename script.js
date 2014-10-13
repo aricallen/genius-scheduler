@@ -102,11 +102,14 @@
 			if ($text === '') {
 				$text = 'splitShift';
 			}
+			if ($text === 'RTO') {
+				$text = '';
+			}
 			days.push($text.replace(/\W/g, ''));
 		});
 		days = cleanArray(days);
 		days = handleSplitShift(days);
-		
+
 		return days;
 	}
 
