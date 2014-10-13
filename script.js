@@ -157,7 +157,7 @@
 	function formatScheduleData(shifts, beginningDate) {
 		var dayNames = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 		var scheduleDataArray = []; // array of schedule data objects
-		for( i=0, j=0; i < shifts.length; i++, j+=2 ) {
+		for(i=0; i < shifts.length; i++) {
 			var incrDate = dayNames.indexOf(shifts[i].day);
 			var variableDate = new Date();
 			variableDate.setDate(beginningDate.getDate() + incrDate);
@@ -180,8 +180,8 @@
 		document.location = pathToICSCreater + "?schedule_data_json=" + schedule_data_json;
 	}
 
-	function pp($data) {
-		console.log($data);
+	function pp(data) {
+		console.log(data);
 	}
 
 })(); // main{} siaf
