@@ -64,7 +64,7 @@
 			/**
 			 * sending to php to create ics
 			 */
-			var pathToICSCreater = "https://github.com/aricallen/genius-scheduler/receiver.php";
+			var pathToICSCreater = "https://www.curiousrhythms.com/genius-scheduler/receiver.php";
 			createICS(scheduleData, pathToICSCreater);
 
 		}
