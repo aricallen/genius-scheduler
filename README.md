@@ -18,35 +18,25 @@ Navigate to where you can see your schedule for the week on mypage and click the
 
 An .ics file will be created with your shifts for the week that you can add to your calendar of choice (just double click it in downloads).
 
-The legend attached to the bottom of the page shows timings for the full page load and hovering over a coloured area on the heatmap will move the timeline indicator to show you when that image was fully loaded.
-
 ##Example
 
-![Example Heatmap](http://zeman.github.io/perfmap/example.jpg)
+![Example Page](https://github.com/aricallen/genius-scheduler/screenshot.jpg)
 
 ##Background
 
-Conceived as part of a set of [data visualization experiments](http://lab.speedcurve.com) which re-imagined the front-end performance waterfall chart by Mark Zeman from [SpeedCurve](http://speedcurve.com) presented at [Velocity New York 2014.](http://speedcurve.com/blog/velocity-a-better-waterfall-chart/)
+Inspired by Kronical and Roster Genius. Two programs that used to provide a solution for this need but were taken down for whatever reason. So I decided to build my own version. We work in a place where we shouldn't have to keep manually put our schedules into our devices!
+
+Hopefully you will find this an easy and useful tool that will save everyone time and energy :)
 
 ##Works In
 
-Chrome
+- Chrome (you may have to "allow unsafe script" for it to work)
 
 ##To Do
 
-- Deal with fixed position elements (calling all front-end ninjas, send me your thoughts on how best to do this)
-- Crawl iframe images
-- Hover state with more detail on the timings of an individual resource
-- User timing, pull out and highlight any elements with associated user timing events
-- Expand top nav to show full waterfall chart of all resources. Combine with Andy's [waterfall bookmarklet?](https://github.com/andydavies/waterfall)
+- Test other browsers
 
-##Change Log
+##Contributing
 
-- 2014-10-06 First push of rough proof of concept
-- 2014-10-07 Added background-image support
-- 2014-10-08 Added interactive legend with page level timing and timeline head on overlay hover
-- 2014-10-12 Ignore elements with visibility:hidden, check for viewport sized images and treat like a body image, design tweaks
+Comment here if you find any bugs, have any suggestions or feature requests. Pull requests and forks always welcome!
 
-##Thanks
-
-Big thanks to Steve Souders who was inspired enough to whip up the intial code structure while simultaneously participating at WebPerfDays NY. Clever cookie!
