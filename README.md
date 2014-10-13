@@ -6,7 +6,7 @@ Just add the bookmarklet below to your bookmarks bar.
 
 Just drag the following link to your bookmark bar!
 
-href(javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://github.com/aricallen/genius-scheduler/script.js';})();)
+<a href="javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://github.com/aricallen/genius-scheduler/script.js';})();">A Link</a>
 
 Alternatively, create a new bookmark and add the following code as the source.
 
@@ -21,7 +21,7 @@ An .ics file will be created with your shifts for the week that you can add to y
 
 ##Example
 
-img(https://github.com/aricallen/genius-scheduler/blob/master/example-mypage.png)
+![Example MyPage](https://raw.githubusercontent.com/aricallen/genius-scheduler/master/example-mypage.png)
 
 ##Background
 
