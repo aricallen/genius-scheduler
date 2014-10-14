@@ -50,6 +50,7 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN
 CALSCALE:GREGORIAN
+
 <?php 
 
 	$eol = "\r\n";
@@ -107,6 +108,7 @@ CALSCALE:GREGORIAN
 		$cal .= $br;
 
 ?>
+
 BEGIN:VEVENT
 UID:<?php echo $uid . $eol; ?>
 DTSTART;TZID=America/New_York:<?php echo $cal_start_time . $eol; ?>
@@ -114,12 +116,13 @@ DTEND;TZID=America/New_York:<?php echo $cal_end_time . $eol; ?>
 DTSTAMP:<?php echo $stamp . $eol; ?>
 DESCRIPTION:<?php echo $description . $eol; ?>
 SUMMARY:<?php echo $description . $eol; ?>
+SEQUENCE:1
 END:VEVENT
 <?php
 	} // end foreach VEVENT loop
 ?>
-END:VCALENDAR
 
+END:VCALENDAR
 	<?php 
 
 	$cal .= "END:VCALENDAR" . $br;
