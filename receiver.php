@@ -111,6 +111,7 @@ CALSCALE:GREGORIAN
 
 BEGIN:VEVENT
 UID:<?php echo $uid . $eol; ?>
+CREATED:<?php echo $stamp . $eol; ?>
 DTSTART;TZID=America/New_York:<?php echo $cal_start_time . $eol; ?>
 DTEND;TZID=America/New_York:<?php echo $cal_end_time . $eol; ?>
 DTSTAMP:<?php echo $stamp . $eol; ?>

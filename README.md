@@ -44,7 +44,7 @@ iOS:
 
 ##To Do
 
-- Mobile version?
+- Make compatible with 10.8
 
 ##Contributing
 
