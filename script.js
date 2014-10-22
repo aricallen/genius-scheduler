@@ -67,7 +67,8 @@
 			 * sending to php to create ics
 			 */
 			var pathToICSCreater = "http://www.curiousrhythms.com/genius-scheduler/receiver.php";
-			// createICS(scheduleData, pathToICSCreater);
+			// var pathToICSCreater = "http://localhost/production/genius-scheduler/receiver.php";
+			createICS(scheduleData, pathToICSCreater);
 
 		}
 
@@ -107,11 +108,13 @@
 			"year" : parseInt(year),
 		}
 
+		pp(aDate, 'a date');
+
 		GSDate = new Date();
 		GSDate.setMonth(aDate.month);
 		GSDate.setDate(aDate.date);
 		GSDate.setFullYear(aDate.year);
-
+		pp(GSDate, 'gs date');
 		return GSDate;
 	}
 
@@ -191,7 +194,10 @@
 		for(i=0; i < shifts.length; i++) {
 			var incrDate = dayNames.indexOf(shifts[i].day);
 			var variableDate = new Date();
+			variableDate.setMonth(beginningDate.getMonth());
+			variableDate.setFullYear(beginningDate.getFullYear());
 			variableDate.setDate(beginningDate.getDate() + incrDate);
+
 			var formattedScheduleDataObj = {
 				dayName : shifts[i].day,
 				startTime : shifts[i].startTime,
@@ -200,6 +206,7 @@
 				date : variableDate.getDate(),
 				year : variableDate.getFullYear(),
 			}
+			pp(formattedScheduleDataObj);
 			scheduleDataArray.push(formattedScheduleDataObj);
 		}
 		return scheduleDataArray;

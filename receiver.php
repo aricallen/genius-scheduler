@@ -8,7 +8,7 @@
 	if ( isset($_REQUEST['schedule_data_json']) && $_REQUEST['schedule_data_json'] ) {
 		$schedule_data_json = $_REQUEST['schedule_data_json'];
 		if(TESTING) {
-			echo '<a href="https://www.curiousrhythms.com/genius-scheduler/raw-source.html">Reload</a>';
+			echo '<a href="http://localhost/production/genius-scheduler/tester.html">Reload</a>';
 			echo '<br /><br /><br />';
 			echo $schedule_data_json ? $schedule_data_json : "no data retrieved";
 			echo "<br /><br />";
