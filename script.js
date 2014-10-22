@@ -58,33 +58,55 @@
 				} 
 			}); // >> Schedule begins Sep 20, 2014 
 			var beginningDate = getBeginningDate(scheduleHeader); // >> Sat Sep 26 2014 00:25:51 GMT-0400 (EDT) 
-			// var shifts = getShifts();
 
 			var days = getDays(); 
 			var times = getTimes();
 			var shifts = createShifts(days, times);
-			// pp(shifts);
 			var scheduleData = formatScheduleData(shifts, beginningDate);
-			
 			/**
 			 * sending to php to create ics
 			 */
 			var pathToICSCreater = "http://www.curiousrhythms.com/genius-scheduler/receiver.php";
-			createICS(scheduleData, pathToICSCreater);
+			// createICS(scheduleData, pathToICSCreater);
 
 		}
 
 	} // gatherData();
 
-	function getBeginningDate(phraseArray) {
-		var months = new Array();
-		months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-		phraseArray = phraseArray.split(" ");
-		aDate = {
-			month : parseInt(months.indexOf(phraseArray[2])),
-			date : parseInt(phraseArray[3]),
-			year : parseInt(phraseArray[4]),
+	function getBeginningDate(scheduleHeader) {
+		var month;
+		var monthNum;
+		var date;
+		var year;
+		var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+		var monthsLong = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+		scheduleHeader = scheduleHeader.split(" ");
+		for (var i = 0; i < scheduleHeader.length; i++) {
+			scheduleHeader[i] = scheduleHeader[i].replace(/\W/g, '');
 		}
+
+		for (var i = 0; i < scheduleHeader.length; i++) {
+			var textPiece = scheduleHeader[i];
+			if (months.indexOf(textPiece) !== -1) {
+				monthNum = months.indexOf(textPiece);
+				month = textPiece;
+			}
+			if (monthsLong.indexOf(textPiece) !== -1) {
+				monthNum = monthsLong.indexOf(textPiece);
+				month = textPiece
+			}
+			if ( month == textPiece && scheduleHeader[i+1].length < 3 && scheduleHeader[i+2].length == 4 ) {
+				date = scheduleHeader[i+1];
+				year = scheduleHeader[i+2];
+			}
+		}
+
+		aDate = {
+			"month" : parseInt(monthNum),
+			"date" : parseInt(date),
+			"year" : parseInt(year),
+		}
+
 		GSDate = new Date();
 		GSDate.setMonth(aDate.month);
 		GSDate.setDate(aDate.date);
@@ -112,7 +134,6 @@
 		}
 		days = cleanArray(days); // removes empty strings
 		days = handleSplitShift(days);
-		pp(days, "days");
 		return days;
 	}
 
@@ -179,7 +200,6 @@
 				date : variableDate.getDate(),
 				year : variableDate.getFullYear(),
 			}
-			// pp(formattedScheduleDataObj);
 			scheduleDataArray.push(formattedScheduleDataObj);
 		}
 		return scheduleDataArray;
@@ -191,11 +211,12 @@
 	}
 
 	function pp(data, text) {
-		console.log(data, text);
+		if(text == undefined) {
+			console.log(data);
+		} else {
+			console.log(data, text);			
+		}
 	}
-
-
-
 })(); // main{} siaf
 
 
