@@ -108,13 +108,13 @@
 			"year" : parseInt(year),
 		}
 
-		pp(aDate, 'a date');
+		// pp(aDate, 'a date');
 
 		GSDate = new Date();
 		GSDate.setMonth(aDate.month);
 		GSDate.setDate(aDate.date);
 		GSDate.setFullYear(aDate.year);
-		pp(GSDate, 'gs date');
+		// pp(GSDate, 'gs date');
 		return GSDate;
 	}
 
@@ -206,7 +206,7 @@
 				date : variableDate.getDate(),
 				year : variableDate.getFullYear(),
 			}
-			pp(formattedScheduleDataObj);
+			// pp(formattedScheduleDataObj);
 			scheduleDataArray.push(formattedScheduleDataObj);
 		}
 		return scheduleDataArray;

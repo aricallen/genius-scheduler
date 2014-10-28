@@ -27,19 +27,25 @@ Hopefully you will find this an easy and useful tool that will save everyone tim
 
 ##Tested In
 
-
 OS X:
 
 10.10
 - Safari
+- Chrome
 
 10.9:
 - Safari
-- Chrome (you may have to "allow unsafe script" for it to work... click the shield in the address bar)
+- Chrome
+
+Notes: 
+Chrome - by default blocks the script from performing
+- you may have to click "allow unsafe script" for it to work... (click the shield in the address bar)
+When I updated to Yosemite, the .ics file was being opened by "CalendarHelper" and needed to be changed to "Open With Calendar"
+- get info on file and change all to "Calendar"
 
 iOS:
 
-8.0.2
+8.0 +
 - Mobile Safari
 
 ##To Do
