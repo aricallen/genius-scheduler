@@ -63,11 +63,12 @@
 			var times = getTimes();
 			var shifts = createShifts(days, times);
 			var scheduleData = formatScheduleData(shifts, beginningDate);
+
 			/**
 			 * sending to php to create ics
 			 */
-			var pathToICSCreater = "http://www.curiousrhythms.com/genius-scheduler/receiver.php";
-			// var pathToICSCreater = "http://localhost/production/genius-scheduler/receiver.php";
+			// var pathToICSCreater = "http://www.curiousrhythms.com/genius-scheduler/receiver.php";
+			var pathToICSCreater = "http://localhost/production/genius-scheduler/receiver.php";
 			createICS(scheduleData, pathToICSCreater);
 
 		}
@@ -130,7 +131,7 @@
 			days.push($text.replace(/\W/g, ''));
 		});
 		for (var i = 0; i < days.length; i++) {
-			if(dayNames.indexOf(days[i]) < 0) {
+			if(dayNames.indexOf(days[i]) < 0 && days[i] !== 'splitShift') {
 				// other text that is not a day i.e. RTO
 				days[i] = '';
 			}

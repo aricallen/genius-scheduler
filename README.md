@@ -21,30 +21,27 @@ javascript:(function(){document.body.appendChild(document.createElement('script'
 
 ##Background
 
-Inspired by previous similar projects [Kronical](http://byronthegreat.com/kronical/) and [Roster Genius](https://github.com/joshhunt/rostergenius). These used to provide a solution for this need but were taken down for whatever reason. So I decided to build my own version. We work in a place where we shouldn't have to keep manually put our schedules into our devices!
+Inspired by previous similar projects [Kronical](http://byronthegreat.com/kronical/) and [Roster Genius](https://github.com/joshhunt/rostergenius). These used to provide a solution for this need but were taken down for whatever reason. So I decided to build my own version. We work in a place where we shouldn't have to manually put our schedules into our devices!
 
 Hopefully you will find this an easy and useful tool that will save everyone time and energy :)
 
 ##Tested In
 
 OS X:
-
 10.10
 - Safari
 - Chrome
-
 10.9:
 - Safari
 - Chrome
 
-Notes: 
+Notes:
 Chrome - by default blocks the script from performing
 - you may have to click "allow unsafe script" for it to work... (click the shield in the address bar)
 When I updated to Yosemite, the .ics file was being opened by "CalendarHelper" and needed to be changed to "Open With Calendar"
 - get info on file and change all to "Calendar"
 
 iOS:
-
 8.0 +
 - Mobile Safari
 
