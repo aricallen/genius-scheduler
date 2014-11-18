@@ -10,9 +10,9 @@
 		if(TESTING) {
 			echo '<a href="http://localhost/production/genius-scheduler/tester.html">Reload</a>';
 			echo '<br /><br /><br />';
-			echo $schedule_data_json ? $schedule_data_json : "no data retrieved";
+			echo $schedule_data_json ? $schedule_data_json : "no data recieved";
 			echo "<br /><br />";
-			echo print_r(json_decode($schedule_data_json));			
+			// echo print_r(json_decode($schedule_data_json));			
 		}
 	}
 
@@ -128,8 +128,8 @@ END:VCALENDAR
 	$cal .= "END:VCALENDAR" . $br;
 
 	if(TESTING) {
-		echo $cal;
-		echo $br;
+		// echo $cal;
+		// echo $br;
 	}
 
 	/*/~~~~~~~~~~~~~////~~~~~~~~~~~~~~////~~~~~~~~~~~~~/*/
@@ -189,11 +189,10 @@ END:VCALENDAR
 
 	function parse_minutes_from_string($time) {
 		$hour = parse_hour_from_string($time);
-		if ( $hour < 10 ) {
-			return intval(substr($time, 2, 2));
-		} else {
-			return intval(substr($time, 3, 2));			
-		}
+		$minutes = false;
+		$colon_pos = strpos($time, ":");
+		$minutes = substr($time, $colon_pos+1, 2);
+		return $minutes;
 	}
 
 ?>
