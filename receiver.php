@@ -5,15 +5,29 @@
  * receive json data mined from bookmarklet
  * parse data and create ics file 
  */
-	if ( isset($_REQUEST['schedule_data_json']) && $_REQUEST['schedule_data_json'] ) {
+	if ( !isset($_REQUEST['schedule_data_json']) || !$_REQUEST['schedule_data_json'] ) {
+		echo("perminission denied");
+		die();
+	} else {
 		$schedule_data_json = $_REQUEST['schedule_data_json'];
+		$client_tz = $_REQUEST['client_tz'];
+		if(!$client_tz) { 
+			// default to EST 
+			$client_tz = "America/New_York";
+		}
 		if(TESTING) {
 			echo '<a href="http://localhost/production/genius-scheduler/tester.html">Reload</a>';
 			echo '<br /><br /><br />';
 			echo $schedule_data_json ? $schedule_data_json : "no data recieved";
 			echo "<br /><br />";
+			if(!$client_tz) { 
+				// default to EST 
+				echo "<br /><br />no timezone detected -> " . $client_tz . "<br /><br />";
+			}
+
 			// echo print_r(json_decode($schedule_data_json));			
 		}
+		log_use();
 	}
 
 
@@ -30,7 +44,7 @@
 ?>
 BEGIN:VTIMEZONE
 TZID:America/New_York
-X-LIC-LOCATION:America/New_York
+X-LIC-LOCATION:<?php echo $client_tz; ?>
 BEGIN:DAYLIGHT
 TZOFFSETFROM:-0500
 TZOFFSETTO:-0400
@@ -111,8 +125,8 @@ CALSCALE:GREGORIAN
 BEGIN:VEVENT
 UID:<?php echo $uid . $eol; ?>
 CREATED:<?php echo $stamp . $eol; ?>
-DTSTART;TZID=America/New_York:<?php echo $cal_start_time . $eol; ?>
-DTEND;TZID=America/New_York:<?php echo $cal_end_time . $eol; ?>
+DTSTART;TZID=<?php echo $client_tz; ?>:<?php echo $cal_start_time . $eol; ?>
+DTEND;TZID=<?php echo $client_tz; ?>:<?php echo $cal_end_time . $eol; ?>
 DTSTAMP:<?php echo $stamp . $eol; ?>
 DESCRIPTION:<?php echo $description . $eol; ?>
 SUMMARY:<?php echo $description . $eol; ?>
@@ -193,6 +207,10 @@ END:VCALENDAR
 		$colon_pos = strpos($time, ":");
 		$minutes = substr($time, $colon_pos+1, 2);
 		return $minutes;
+	}
+
+	function log_use() {
+		return;
 	}
 
 ?>

@@ -12,33 +12,46 @@
  */
 
 (function(){
+	// include jsTimeZoneDetect
+	var done = false;
+	var jsTZDScript = document.createElement("script");
+	jsTZDScript.src = "//cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js";
+	jsTZDScript.onload = jsTZDScript.onreadystatechange = function(){
+		if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
+			done = true;
+			tz = jstz.determine(); // Determines the time zone of the browser client
+		 	// console.log(tz.name());
+		 	var minV = "1.3.2";
+			var preferredV = "2.1.1";
+			// //ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
+
+			// include jQuery now that jsTZD is loaded
+			if (window.jQuery === undefined || window.jQuery.fn.jquery < minV) {
+				var done = false;		
+				var jQueryScript = document.createElement("script");
+				jQueryScript.src = "//ajax.googleapis.com/ajax/libs/jquery/" + preferredV + "/jquery.min.js";
+				jQueryScript.onload = jQueryScript.onreadystatechange = function(){
+					if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
+						done = true;
+						// both libraries loaded, mine data
+						mineScheduleData(tz);
+					}
+				};
+				document.getElementsByTagName("head")[0].appendChild(jQueryScript);
+			} else {
+				$(document).ready(function() {
+					mineScheduleData(tz);
+				});
+			} // jQuery ready
+		} // jsTZD ready
+	};
+	document.getElementsByTagName("head")[0].appendChild(jsTZDScript);
+
+	// including jQuery
 	// the minimum version of jQuery we want
-	var minV = "1.3.2";
-	var preferredV = "2.1.1";
-	// //ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
-
-	// check prior inclusion and version
-	if (window.jQuery === undefined || window.jQuery.fn.jquery < minV) {
-		var done = false;
-		var script = document.createElement("script");
-		script.src = "//ajax.googleapis.com/ajax/libs/jquery/" + preferredV + "/jquery.min.js";
-		script.onload = script.onreadystatechange = function(){
-			if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
-				done = true;
-				mineScheduleData();
-			}
-		};
-		console.log("appending");
-		document.getElementsByTagName("head")[0].appendChild(script);
-	} else {
-		$(document).ready(function() {
-			mineScheduleData();
-		});
-	}
-
-	var dateTest;
 	
-	function mineScheduleData() {
+	
+	function mineScheduleData(tz) {
 		var currentURL = window.location.protocol + "//" + window.location.host + window.location.pathname;
 		// actual page:
 		// https://mypage.apple.com/myPage/myTime.action?method=forwardSchedule&activeMenu=forwardSchedule
@@ -69,8 +82,7 @@
 			 */
 			var pathToICSCreater = "http://www.curiousrhythms.com/genius-scheduler/receiver.php";
 			// var pathToICSCreater = "http://localhost/production/genius-scheduler/receiver.php";
-			createICS(scheduleData, pathToICSCreater);
-
+			createICS(scheduleData, pathToICSCreater, tz);
 		}
 
 	} // gatherData();
@@ -213,9 +225,9 @@
 		return scheduleDataArray;
 	}
 
-	function createICS(dataArray, pathToICSCreater) {
+	function createICS(dataArray, pathToICSCreater, tz) {
 		var schedule_data_json = JSON.stringify(dataArray);
-		document.location = pathToICSCreater + "?schedule_data_json=" + schedule_data_json;
+		document.location = pathToICSCreater + "?schedule_data_json=" + schedule_data_json + "&client_tz=" + tz.name();
 	}
 
 	function pp(data, text) {
