@@ -39,7 +39,7 @@
 	$schedule_data = json_decode($schedule_data_json);
 	$a_date = $schedule_data[0];
 
-	date_default_timezone_set("America/New_York");
+	date_default_timezone_set($client_tz);
 
 ?>
 BEGIN:VTIMEZONE
